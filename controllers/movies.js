@@ -6,8 +6,15 @@ const BadRequestError = require('../constants/status/BadRequestError');
 const { STATUS_CREATED } = require('../constants/status/status');
 
 function getMovie(req, res, next) {
-  movieSchema.find({}).sort({ createdAt: -1 })
-    .then((movies) => res.send({ data: movies }))
+  movieSchema.find({ owner: req.user._id })
+    .populate('owner', '_id')
+    .then((movies) => {
+      if (!movies) {
+        throw new NotFoundError('Кина не будет');
+      } else {
+        res.send(movies);
+      }
+    })
     .catch(next);
 }
 
