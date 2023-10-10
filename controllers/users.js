@@ -84,11 +84,13 @@ function setInfo(req, res, next) {
       throw new NotFoundError('Пользователь с указанным _id не найден');
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new BadRequestError('Переданы некорректные данные'));
-      } else {
-        next(err);
+      if (err.code === 11000) {
+        return next(new ConflictError('Пользователь уже существует'));
       }
+      if (err.name === 'ValidationError') {
+        return next(new BadRequestError('Введены некорректные данные'));
+      }
+      return next(err);
     });
 }
 
