@@ -1,8 +1,8 @@
 const allowedCors = [
-  'https://project.verbaldi.nomoredomainsicu.ru',
-  'http://project.verbaldi.nomoredomainsicu.ru',
-  'https://backend.verbaldi.nomoredomainsicu.ru',
-  'http://backend.verbaldi.nomoredomainsicu.ru',
+  'https://movie.verbaldi.nomoredomainsrocks.ru',
+  'http://movie.verbaldi.nomoredomainsrocks.ru',
+  'https://api.verbaldi.nomoredomainsrocks.ru',
+  'http://api.verbaldi.nomoredomainsrocks.ru',
   'https://localhost:3000',
   'http://localhost:3000',
 ];
