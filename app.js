@@ -4,9 +4,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
-const { rateLimit } = require('express-rate-limit');
 const { errors } = require('celebrate');
 
+const limiter = require('./middlewares/rateLimiter');
 const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorServer = require('./middlewares/errors');
@@ -22,13 +22,6 @@ mongoose.connect(URL);
 app.use(express.json());
 
 app.use(helmet());
-
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  standardHeaders: 'draft-7',
-  legacyHeaders: false,
-});
 
 app.use(requestLogger);
 app.use(limiter);
