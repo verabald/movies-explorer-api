@@ -1,5 +1,5 @@
 const { celebrate, Joi } = require('celebrate');
-const { regex, regexRu, regexEn } = require('../constants/regex');
+const { regex } = require('../constants/regex');
 
 const createMovieValid = celebrate({
   body: Joi.object().keys({
