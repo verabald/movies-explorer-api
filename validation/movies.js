@@ -3,8 +3,8 @@ const { regex, regexRu, regexEn } = require('../constants/regex');
 
 const createMovieValid = celebrate({
   body: Joi.object().keys({
-    nameRU: Joi.string().required().regex(regexRu),
-    nameEN: Joi.string().required().regex(regexEn),
+    nameRU: Joi.string().required(),
+    nameEN: Joi.string().required(),
     country: Joi.string().required(),
     director: Joi.string().required(),
     duration: Joi.number().required(),
