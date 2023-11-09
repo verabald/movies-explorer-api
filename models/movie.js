@@ -2,28 +2,16 @@ const mongoose = require('mongoose');
 
 const { ObjectId } = mongoose.Schema.Types;
 const validator = require('validator');
-const { regexRu } = require('../constants/regex');
-const { regexEn } = require('../constants/regex');
 const { req } = require('../constants/schema');
 
 const movieSchema = new mongoose.Schema({
   nameRU: {
     type: String,
     required: req,
-    validate: {
-      validator(v) {
-        return regexRu.test(v);
-      },
-    },
   },
   nameEN: {
     type: String,
     required: req,
-    validate: {
-      validator(v) {
-        return regexEn.test(v);
-      },
-    },
   },
   country: {
     type: String,
